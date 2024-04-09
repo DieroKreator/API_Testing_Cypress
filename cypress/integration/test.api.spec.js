@@ -5,6 +5,9 @@ describe('API Testing', () => {
             const pet = require('cypress/fixtures/json/pet1.json')
             
             cy.request({method: 'POST', url: '/pet', body: {
+                    headers: {
+                        'Content-Type': 'application/json'    
+                    },
                     "id": 602740501,
                     "name": "Magnum",
                     "category_id": 1,
@@ -24,7 +27,8 @@ describe('API Testing', () => {
         const pet = require('cypress/fixtures/json/pet1.json')
             //Getting response from petstore demo website 
         cy.request('GET',
-                    '/v2/pet/602740501'
+                    '/v2/pet/602740501',
+                    {'Content-Type':'application/json'}
                     ).then((response) =>{
             //Expecting the response status code to be 200
             expect(response.status).to.eq(200)
@@ -38,6 +42,9 @@ describe('API Testing', () => {
         const pet = require('cypress/fixtures/json/pet2.json')
         
         cy.request({method: 'PUT', url: '/pet', body: {
+            headers: {
+                'Content-Type': 'application/json'    
+                },
                 "id": 602740501,
                 "name": "Magnum",
                 "category_id": 1,
@@ -58,7 +65,8 @@ describe('API Testing', () => {
         const pet = require('cypress/fixtures/json/pet1.json')
             //Getting response from petstore demo website 
         cy.request('DELETE',
-                    '/v2/pet/602740501'
+                    '/v2/pet/602740501',
+                    {'Content-Type':'application/json'}
                     ).then((response) =>{
             //Expecting the response status code to be 200
             expect(response.status).to.eq(200)
